@@ -13,13 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Auto green
         run: |
           git config --local user.email "1610450962@qq.com"
           git config --local user.name "Linlccc"
-          git remote set-url origin https://${{ github.actor }}:${{ secrets.testTitle }}@github.com/${{ github.repository }}
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git pull --rebase
           git commit --allow-empty -m "daily task"
           git push
